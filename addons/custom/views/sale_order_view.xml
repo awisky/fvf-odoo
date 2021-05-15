@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    
+
     <record id="price_updatet_sale_order_form_inherit" model="ir.ui.view">
         <field name="model">sale.order</field>
         <field name="name">sale.order.price</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="before">
-            <button string="Price Update" type="object"  name="call_price_update_assistant"/>
+                <button string="Price Update" type="object" name="call_price_update_assistant"/>
             </xpath>
-   
+            <xpath expr="//tree//field[@name='sequence']" position="after">
+                <field name="item_number" optional="hide"/>
+                <field name="check" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="item_count"/>
+            </xpath>
+
         </field>
     </record>
 

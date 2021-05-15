@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, api, _
+from odoo import models, fields, api, _
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
+
+    item_count = fields.Integer(compute='_compute_items', string='Items')
+
+    @api.depends('order_line')
+    def _compute_items(self):
+        for sale in self:
+            sale.item_count = len(sale.order_line)
 
     def call_price_update_assistant(self):
 
@@ -21,3 +28,13 @@ class SaleOrder(models.Model):
         }
 
 
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    item_number = fields.Integer(compute='_compute_item_number', string='Seq')
+    check = fields.Boolean()
+
+    @api.depends('sequence')
+    def _compute_item_number(self):
+        for line in self:
+            line.item_number = line.sequence - 9
