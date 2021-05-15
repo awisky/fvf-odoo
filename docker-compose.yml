@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+# Agustin Wisky <agustinwisky@capitole-consulting.com> 
+
+version: '3'
+services:
+  web:
+    image: odoo:14.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    tty: true
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+      - ./addons_oca:/mnt/oca-addons
+  db:
+    image: postgres:12
+    env_file:
+      - db.env
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-web-data:
+  odoo-db-data:
