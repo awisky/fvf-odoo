@@ -9,6 +9,8 @@ class SaleOrder(models.Model):
 
     item_count = fields.Integer(compute='_compute_items', string='Items')
 
+    city = fields.Char(related='partner_id.city', store=True)
+
     @api.depends('order_line')
     def _compute_items(self):
         for sale in self:
