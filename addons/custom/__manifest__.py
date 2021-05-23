@@ -16,6 +16,7 @@
     'data': [
         'security/ir.model.access.csv',
         'report/sale_report_templates.xml',
+        'report/sale_report.xml',
         'views/sale_order_view.xml',
         'views/product_pricelist_view.xml',
         'wizard/price_update_wizard_view.xml',
