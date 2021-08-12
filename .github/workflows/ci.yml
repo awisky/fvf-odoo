@@ -79,5 +79,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/odoo:${{ steps.extract_branch.outputs.branch }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/fvf:${{ steps.extract_branch.outputs.branch }}
   

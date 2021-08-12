@@ -1,9 +1,6 @@
-# © 2021 bloopark systems (<http://bloopark.de>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-import re
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
-from odoo.osv import expression
+
+from odoo import models, api
 
 
 def make_domain(domain_name, code):

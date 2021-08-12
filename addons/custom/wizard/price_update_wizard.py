@@ -1,15 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import uuid
 
-from itertools import groupby
-from datetime import datetime, timedelta
-from werkzeug.urls import url_encode
-from odoo import api, fields, models, _
-from odoo.addons import decimal_precision as dp
-from ast import literal_eval
+from odoo import api, fields, models
 
-from collections import defaultdict
 import logging
 _logger = logging.getLogger(__name__)
 

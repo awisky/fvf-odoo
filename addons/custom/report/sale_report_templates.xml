@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-
     <template id="report_saleorder_document_custom" inherit_id="sale.report_saleorder_document">
-
         <xpath expr="//td[@name='td_taxes']" position="replace"></xpath>
         <xpath expr="//th[@name='th_taxes']" position="replace"></xpath>
-
 
         <xpath expr="//td[@name='td_subtotal']" position="replace">
             <td name="td_subtotal" class="text-right o_price_total">
                 <span t-field="line.price_total" />
             </td>
         </xpath>
-
         <xpath expr="//th[@name='th_subtotal']" position="replace">
             <th name="th_subtotal" class="text-right">
                 <span>Amount</span>
             </th>
         </xpath>
-
-
-
-
         <xpath expr="//div[@id='total']" position="replace">
             <div id="total" class="row" name="total">
                 <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
@@ -40,8 +31,6 @@
                 </div>
             </div>
         </xpath>
-
-
     </template>
 
 

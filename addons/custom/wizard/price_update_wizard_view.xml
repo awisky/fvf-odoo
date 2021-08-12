@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_price_update_wizard" model="ir.ui.view">
         <field name="name">price.update</field>
         <field name="model">price.update</field>
         <field name="arch" type="xml">
             <form string="Price Update">
-
-            
-
                 <notebook>
                     <page name="line_ids_page" string="Lines">
                         <field name="selected" />
@@ -25,15 +21,11 @@
                     </page>
                 </notebook>
                 <footer>
-
                     <button string="Cancel" class="btn-secondary" special="cancel" />
                     <button name="update_product_price" string="Update Product" type="object" class="btn-primary" />
                     <button name="update_quotation_price" string="Update Quotation" type="object" class="btn-primary" />
-                
                 </footer>
             </form>
         </field>
     </record>
-
-
 </odoo>
