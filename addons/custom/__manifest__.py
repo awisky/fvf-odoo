@@ -4,7 +4,7 @@
     'name': 'Custom',
     'version': '14.0.1.0.0',
     'category': 'Sales',
-    'summary': "FVF Customizations",
+    'summary': "FVF Customization Module",
     'author': 'Agustin Wisky',
     'website': '',
     'license': 'AGPL-3',
