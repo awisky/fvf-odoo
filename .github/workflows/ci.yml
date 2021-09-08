@@ -1,0 +1,96 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Odoo CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  flake8:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install flake8
+      - name: Lint with flake8
+        run: |
+          flake8 . --exclude=addons_external,*.pyc,__init__.py --max-line-length=80 --statistics
+
+  pylint:
+    needs: flake8
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install pylint_odoo
+      - name: Lint with pylint
+        run: |
+          pylint addons/* ./**/*.py *.py --rcfile ./pylint.cfg --load-plugins pylint_odoo --fail-under 10 --ignore-patterns=addons_external
+  
+  build:
+    needs: pylint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git variables
+      id: extract_branch
+      shell: bash
+      run: |
+        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        echo "::set-output name=sha_short::$(echo $GITHUB_SHA | cut -c1-7)"
+    - 
+      name: Check outputs
+      run: | 
+        echo ${{ steps.extract_branch.outputs.branch }}
+        echo ${{ steps.extract_branch.outputs.sha_short }}
+    - 
+      name: Get Time
+      id: time
+      uses: nanzm/get-time-action@v1.1
+      with:
+        timeZone: 8
+        format: 'YYYYMMDDHHmm'
+    -
+      name: Checkout
+      uses: actions/checkout@v2
+    -
+      name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+    -
+      name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    -
+      name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    -
+      name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/fvf:${{ steps.extract_branch.outputs.branch }}-${{ steps.time.outputs.time }}
+
+    
+  

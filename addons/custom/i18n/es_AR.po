@@ -1,0 +1,185 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20210111\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-15 22:26+0000\n"
+"PO-Revision-Date: 2021-05-15 22:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom
+#: model_terms:ir.ui.view,arch_db:custom.report_saleorder_document_custom
+msgid "<span>Amount</span>"
+msgstr "<span>Total</span>"
+
+#. module: custom
+#: model_terms:ir.ui.view,arch_db:custom.report_saleorder_document_custom
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: custom
+#: model_terms:ir.ui.view,arch_db:custom.view_price_update_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_sale_order_line__check
+msgid "Check"
+msgstr "Check"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_sale_order__city
+#: model_terms:ir.ui.view,arch_db:custom.view_sales_order_filter
+msgid "City"
+msgstr "Ciudad"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__create_uid
+#: model:ir.model.fields,field_description:custom.field_price_update_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__create_date
+#: model:ir.model.fields,field_description:custom.field_price_update_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update_line__current_price
+msgid "Current Price"
+msgstr "Precio Actual"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__display_name
+#: model:ir.model.fields,field_description:custom.field_price_update_line__display_name
+#: model:ir.model.fields,field_description:custom.field_product_pricelist_item__display_name
+#: model:ir.model.fields,field_description:custom.field_sale_order__display_name
+#: model:ir.model.fields,field_description:custom.field_sale_order_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__id
+#: model:ir.model.fields,field_description:custom.field_price_update_line__id
+#: model:ir.model.fields,field_description:custom.field_product_pricelist_item__id
+#: model:ir.model.fields,field_description:custom.field_sale_order__id
+#: model:ir.model.fields,field_description:custom.field_sale_order_line__id
+msgid "ID"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_sale_order__item_count
+msgid "Items"
+msgstr "Items"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update____last_update
+#: model:ir.model.fields,field_description:custom.field_price_update_line____last_update
+#: model:ir.model.fields,field_description:custom.field_product_pricelist_item____last_update
+#: model:ir.model.fields,field_description:custom.field_sale_order____last_update
+#: model:ir.model.fields,field_description:custom.field_sale_order_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__write_uid
+#: model:ir.model.fields,field_description:custom.field_price_update_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__write_date
+#: model:ir.model.fields,field_description:custom.field_price_update_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__line_ids
+#: model:ir.model.fields,field_description:custom.field_price_update_line__line_id
+msgid "Line"
+msgstr ""
+
+#. module: custom
+#: model_terms:ir.ui.view,arch_db:custom.view_price_update_wizard
+msgid "Lines"
+msgstr "Lineas"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update_line__price_unit
+msgid "Price Unit"
+msgstr "Precio Unidad"
+
+#. module: custom
+#: code:addons/custom/models/sale_order.py:0
+#: model:ir.model,name:custom.model_price_update
+#: model_terms:ir.ui.view,arch_db:custom.price_updatet_sale_order_form_inherit
+#: model_terms:ir.ui.view,arch_db:custom.view_price_update_wizard
+#, python-format
+msgid "Price Update"
+msgstr "Actualizar Precios"
+
+#. module: custom
+#: model:ir.model,name:custom.model_price_update_line
+msgid "Price Update Line"
+msgstr ""
+
+#. module: custom
+#: model:ir.model,name:custom.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Regla de Tarifa"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update_line__product_uom
+#: model:ir.model.fields,field_description:custom.field_product_pricelist_item__product_uom
+msgid "Product Uom"
+msgstr "Unindad"
+
+#. module: custom
+#: model:ir.model,name:custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: custom
+#: model:ir.model,name:custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update_line__wizard_id
+msgid "Search"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_price_update__selected
+#: model:ir.model.fields,field_description:custom.field_price_update_line__selected
+msgid "Selected"
+msgstr ""
+
+#. module: custom
+#: model:ir.model.fields,field_description:custom.field_sale_order_line__item_number
+msgid "Seq"
+msgstr "Seq"
+
+#. module: custom
+#: model_terms:ir.ui.view,arch_db:custom.view_price_update_wizard
+msgid "Update Product"
+msgstr "Actualizar Precios de Productos"
+
+#. module: custom
+#: model_terms:ir.ui.view,arch_db:custom.view_price_update_wizard
+msgid "Update Quotation"
+msgstr "Actualizar precios en Presupuesto"
