@@ -45,7 +45,7 @@ jobs:
           pip install pylint_odoo
       - name: Lint with pylint
         run: |
-          pylint addons/* ./**/*.py *.py --rcfile ./pylint.cfg --load-plugins pylint_odoo --fail-under 10 --ignore-patterns=addons_external
+          pylint addons/* ./**/*.py *.py --rcfile ./pylint.cfg --load-plugins pylint_odoo --fail-under 10 --ignore-patterns=addons_external,addons_oca,addons_local
   
   build:
     needs: pylint
