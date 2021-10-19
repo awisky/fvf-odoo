@@ -1,4 +1,4 @@
-FROM odoo:14
+FROM odoo:13
 
 USER root
 # Mount Customize /mnt/"addons" folders for users addons
