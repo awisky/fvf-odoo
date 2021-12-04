@@ -9,9 +9,18 @@ RUN mkdir -p /mnt/odoo \
     && mkdir -p /mnt/odoo/addons_local \
     && mkdir -p /mnt/odoo/addons_external
 
+# Install Chromium
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        apt-utils \
+        python3-dev \
+        python3-wheel \
+        chromium \
+    && pip3 install --upgrade pip
+
 # Update aptitude with new repo
 RUN apt-get update \
-    && apt-get install -y git
+    && apt-get install -y git \
+    build-essential autoconf libtool swig
 
 WORKDIR /mnt/odoo/addons_local
 # Calyx addons
@@ -30,17 +39,25 @@ RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/aeroo_reports.git
 
+RUN pip3 install -r aeroo_reports/requirements.txt
+
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/argentina-sale.git
 
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/miscellaneous.git
 
+RUN pip3 install -r miscellaneous/requirements.txt
+
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/odoo-argentina.git
 
+RUN pip3 install -r odoo-argentina/requirements.txt
+
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/odoo-argentina-ce.git
+
+RUN pip3 install -r odoo-argentina-ce/requirements.txt
 
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/product.git
@@ -54,6 +71,8 @@ RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/ingadhoc/website.git
 
+RUN pip3 install -r website/requirements.txt
+
 WORKDIR /mnt/odoo/addons_oca
 # OCA modules
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
@@ -64,6 +83,8 @@ RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
 
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/OCA/account-financial-tools.git
+
+RUN pip3 install -r account-financial-tools/requirements.txt
 
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/OCA/contract.git
@@ -83,6 +104,8 @@ RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/OCA/reporting-engine.git
 
+RUN pip3 install -r reporting-engine/requirements.txt
+
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/OCA/sale-workflow.git
 
@@ -92,8 +115,12 @@ RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/OCA/server-ux.git
 
+RUN pip3 install -r server-ux/requirements.txt
+
 RUN git clone --progress --verbose -b 13.0 --single-branch --depth 1 \
     https://github.com/OCA/web.git
+
+RUN pip3 install -r web/requirements.txt
 
 WORKDIR /
 COPY ./config/odoo.conf /etc/odoo/
@@ -101,14 +128,7 @@ COPY ./requirements.txt /mnt/odoo/
 ADD ./addons /mnt/odoo/addons
 ADD ./addons_external /mnt/odoo/addons_external
 # Install Chromium
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        apt-utils \
-        python3-dev \
-        python3-wheel \
-        chromium \
-    && pip3 install --upgrade pip \
-    && pip3 install -r /mnt/odoo/requirements.txt
+RUN pip3 install -r /mnt/odoo/requirements.txt
 
-RUN chown -R odoo.odoo /mnt/*
-RUN chown -R odoo.odoo /var/lib/odoo
+RUN chown -R odoo /mnt/*
 #USER odoo
