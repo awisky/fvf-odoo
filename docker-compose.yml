@@ -21,6 +21,9 @@ services:
     tty: true
     volumes:
       - odoo-web-data:/var/lib/odoo
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
+      - ./addons:/mnt/odoo/addons
+      - ./addons_external:/mnt/odoo/addons_external
 volumes:
   odoo-web-data:
   odoo-db-data:

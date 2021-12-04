@@ -109,6 +109,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && pip3 install --upgrade pip \
     && pip3 install -r /mnt/odoo/requirements.txt
 
-RUN chown -R odoo /mnt/*
-
-USER odoo
+RUN chown -R odoo.odoo /mnt/*
+RUN chown -R odoo.odoo /var/lib/odoo
+#USER odoo
