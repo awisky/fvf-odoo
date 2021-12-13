@@ -131,4 +131,10 @@ ADD ./addons_external /mnt/odoo/addons_external
 RUN pip3 install -r /mnt/odoo/requirements.txt
 
 RUN chown -R odoo /mnt/*
+
+ENV PGDATABASE=postgres
+ENV PGPASSWORD=odoo
+ENV PGUSER=odoo
+ENV PGHOST=db
+
 #USER odoo
