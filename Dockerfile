@@ -131,4 +131,5 @@ ADD ./addons_external /mnt/odoo/addons_external
 RUN pip3 install -r /mnt/odoo/requirements.txt
 
 RUN chown -R odoo /mnt/*
+RUN chown -R odoo /var/lib/odoo
 #USER odoo
